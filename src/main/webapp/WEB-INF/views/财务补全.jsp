@@ -22,8 +22,8 @@
 <body>
 	<script>
 		$(function() {
-			$("#chuquan_download_btn").click(function() {
-			    $("#fbean").attr("action","chuquan_download");
+			$("#caiwu_download_btn").click(function() {
+			    $("#fbean").attr("action","caiwu_download");
 			    $("#fbean").submit();
 			});
 		});
@@ -66,11 +66,11 @@
 			<div id="mainRight">
 				<div id="content">
 					<h2 style="display: none;">Content</h2>
-					<h3 id="Tomcat_9_Software_Downloads">除权补全</h3>
+					<h3 id="Tomcat_9_Software_Downloads">财务补全</h3>
 					<div class="text">
 						<p>处理流程：先从通达信券商服务器下载最后交易日的全部有效证券代码、
-							再根据代码下载每只股票的历史除权数据，之后将下载数据出力到文件和数据库进行备份 最后，最后将数据做成飞狐导入用下载文件。</p>
-						<input type="button" id="chuquan_download_btn" value="飞狐导入除权数据下载">
+							再根据代码下载每只股票的历史财务数据，之后将下载数据出力到文件和数据库进行备份 最后，最后将数据做成飞狐导入用下载文件。</p>
+						<input type="button" id="caiwu_download_btn" value="飞狐导入财务数据下载">
 					</div>
 
 				</div>

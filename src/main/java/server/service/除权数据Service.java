@@ -34,7 +34,7 @@ public class 除权数据Service  extends 爸爸数据Service{
 	public String 下载除权导入数据() {
 
 		String[] s财务原始文件全路径 = new String[1];
-		s财务原始文件全路径[0]="/Users/haoyan/Desktop/财务数据/除权数据.data";
+		s财务原始文件全路径[0]="D:\\pleiades\\workspace\\股票数据\\除权数据.data";
 
 		String s财务导出文件全路径 = null;
 
@@ -101,7 +101,7 @@ public class 除权数据Service  extends 爸爸数据Service{
 
 			// 从第二条开始分析
 			String[] s = s每项除权数据.split("\\t");
-			if (s.length != 8) return null;
+			if (s.length != 7) return null;
 			// 判断是不是实际的数据
 			if(new StockData除权ConvertTool().判断是不是有效的除权数据ForDLLData(s)) {
 				// 只有实际的数据才进行后续处理
@@ -113,23 +113,25 @@ public class 除权数据Service  extends 爸爸数据Service{
 				// 市场 证券代码 日期 权息数据类别 派息金额 配股价 送股数 配股数
 
 				// 先取得股票代号，做成文件名
-				String s市场       = s[0];
+				String s市场代码       = s[0];
 				String s股票代码 = s[1];
-				String s日期      = s[2];
-				String s权息数据类别= s[3];
-				String s派息金额 = s[4];
+				String sUTCtime      = s[2];
+				String s送股= s[3];
+				String s配股 = s[4];
 				String s配股价   = s[5];
-				String s送股数   = s[6];
-				String s配股数   = s[7];
+				String s分红   = s[6];
+
 //				String[] sData = new String[] {s市场, s股票代码,s日期,s权息数据类别,s派息金额,s配股价,s送股数,s配股数};
 
+				除权entity.set市场代码(s市场代码);
 				除权entity.set股票代码(s股票代码);
-				除权entity.set市场代码(s市场);
-				除权entity.setUTCtime(s日期);
-				除权entity.set分红(s派息金额);
-				除权entity.set送股(s送股数);
-				除权entity.set配股(s配股数);
+				除权entity.setUTCtime(sUTCtime);
+				除权entity.set送股(s送股);
+				除权entity.set配股(s配股);
 				除权entity.set配股价(s配股价);
+				除权entity.set分红(s分红);
+
+
 
 				除权Entitylist.add(除权entity);
 			}

@@ -6,7 +6,7 @@ import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Repository;
 
-import server.entity.除权Entity;
+import server.entity.财务Entity;
 /**
  * 参照：https://blog.csdn.net/qq_37464248/article/details/82769868
  *
@@ -41,66 +41,64 @@ import server.entity.除权Entity;
 	SELECT * FROM public.book;
  */
 
-@Repository("除权信息Dao")
-public class 除权信息DaoImpl  extends AbstractDao<Integer, 除权Entity> implements 除权信息Dao {
+@Repository("财务信息Dao")
+public class 财务信息DaoImpl  extends AbstractDao<Integer, 财务Entity> implements 财务信息Dao {
 
-	public 除权Entity findById(int id) {
+	public 财务Entity findById(int id) {
 		// 用标准函数取得指定ID的值
-		除权Entity 除权entity = getByKey(id);
-		if(除权entity!=null){
+		财务Entity 财务entity = getByKey(id);
+		if(财务entity!=null){
 			// initializeCollection(user.getUserProfiles());
 		}
-		return 除权entity;
+		return 财务entity;
 	}
 
-	public 除权Entity findByStockCode(String stockCode) {
+	public 财务Entity findByStockCode(String stockCode) {
 		System.out.println("stockCode : "+stockCode);
 		try{
 			// 取得单条结果
-			除权Entity 除权entity = (除权Entity) getEntityManager()
+			财务Entity 财务entity = (财务Entity) getEntityManager()
 					.createQuery("SELECT u FROM User u WHERE u.ssoId LIKE :ssoId")
 					.setParameter("ssoId", stockCode)
 					.getSingleResult();
 
-			if(除权entity!=null){
+			if(财务entity!=null){
 				// initializeCollection(user.getUserProfiles());
 			}
-			return 除权entity;
+			return 财务entity;
 		}catch(NoResultException ex){
 			return null;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<除权Entity> findAll除权信息() {
+	public List<财务Entity> findAll财务信息() {
 		// 取得所有值
-		List<除权Entity> 除权entityList= getEntityManager()
+		List<财务Entity> 财务entityList= getEntityManager()
 				.createQuery("SELECT u FROM User u ORDER BY u.firstName ASC")
 				.getResultList();
-		return 除权entityList;
+		return 财务entityList;
 	}
 
-	public void save(除权Entity 除权entity) {
+	public void save(财务Entity 财务entity) {
 		// 用标准函数追加
-		persist(除权entity);
+		persist(财务entity);
 	}
 
 	public void deleteByStockCode(String stockCode) {
-		除权Entity 除权entity = (除权Entity) getEntityManager()
+		财务Entity 财务entity = (财务Entity) getEntityManager()
 				.createQuery("SELECT u FROM User u WHERE u.ssoId LIKE :ssoId")
 				.setParameter("ssoId", stockCode)
 				.getSingleResult();
 		// 用标准函数删除
-		delete(除权entity);
+		delete(财务entity);
 	}
 
 
-	public void save(List<除权Entity> 除权Entitylist) {
+	public void save(List<财务Entity> 财务Entitylist) {
 		// TODO 自動生成されたメソッド・スタブ
-		for(除权Entity 除权entity : 除权Entitylist) {
-			//除权Entity result= findByStockInfo(除权entity);
-			//if(result==null);
-			save(除权entity);
+		for(财务Entity 财务entity : 财务Entitylist) {
+			save(财务entity);
 		}
 	}
 
