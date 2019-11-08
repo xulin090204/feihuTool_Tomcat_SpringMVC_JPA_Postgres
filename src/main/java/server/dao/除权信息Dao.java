@@ -16,6 +16,7 @@ public interface 除权信息Dao {
 
 	List<除权Entity> findAll除权信息();
 
+
 	void save(List<除权Entity> out除权DataInputBean飞狐list);
 
 }

@@ -41,7 +41,7 @@ import server.entity.除权Entity;
 	SELECT * FROM public.book;
  */
 
-@Repository("除权信息Dao")
+@Repository("除权信息dao")
 public class 除权信息DaoImpl  extends AbstractDao<Integer, 除权Entity> implements 除权信息Dao {
 
 	public 除权Entity findById(int id) {
@@ -98,8 +98,8 @@ public class 除权信息DaoImpl  extends AbstractDao<Integer, 除权Entity> imp
 	public void save(List<除权Entity> 除权Entitylist) {
 		// TODO 自動生成されたメソッド・スタブ
 		for(除权Entity 除权entity : 除权Entitylist) {
-			//除权Entity result= findByStockInfo(除权entity);
-			//if(result==null);
+			除权Entity result= findByStockInfo(除权entity);
+			if(result==null)
 			save(除权entity);
 		}
 	}
@@ -111,4 +111,34 @@ public class 除权信息DaoImpl  extends AbstractDao<Integer, 除权Entity> imp
 //	    }
 //	    collection.iterator().hasNext();
 //	}
+	public 除权Entity findByStockInfo(除权Entity 除权entityParam) {
+
+		  try{
+		   // 取得单条结果
+		   // 市场代码 + 股票代码 + 时间（到日）+ 送股 + 配股 + 配股价 + 分红
+
+		   // .createQuery("SELECT u FROM 除权信息 u WHERE u.市场代码 LIKE :市场代码 AND u.股票代码 LIKE :股票代码 AND u.UTCtime LIKE :UTCtime AND u.送股 LIKE :送股 AND u.配股 LIKE :配股 AND u.配股价 LIKE :配股价 AND u.分红 LIKE :分红")
+		   // .createQuery("SELECT u FROM 除权Entity u WHERE u.市场代码 LIKE :市场代码")
+		   除权Entity 除权entity = (除权Entity) getEntityManager()
+		     .createQuery("SELECT u FROM 除权Entity u WHERE u.市场代码 LIKE :市场代码 AND u.股票代码 LIKE :股票代码 AND u.UTCtime LIKE :UTCtime AND u.送股 LIKE :送股 AND u.配股 LIKE :配股 AND u.配股价 LIKE :配股价 AND u.分红 LIKE :分红")
+		     .setParameter("市场代码", 除权entityParam.get市场代码())
+		     .setParameter("股票代码", 除权entityParam.get股票代码())
+		     .setParameter("UTCtime", 除权entityParam.getUTCtime())
+		     .setParameter("送股", 除权entityParam.get送股())
+		     .setParameter("配股", 除权entityParam.get配股())
+		     .setParameter("配股价", 除权entityParam.get配股价())
+		     .setParameter("分红", 除权entityParam.get分红())
+
+		     .getSingleResult();
+
+		   if(除权entity!=null){
+		    return 除权entity;
+		   }
+		   return null;
+
+		  }catch(NoResultException ex){
+		   return null;
+		  }
+		 }
 }
+

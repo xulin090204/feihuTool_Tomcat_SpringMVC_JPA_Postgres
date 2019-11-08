@@ -18,6 +18,7 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.6.12</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -54,8 +55,7 @@
 		</dependency>
 		<!-- Various Application Context utilities, including EhCache, JavaMail,
 			Quartz, and Freemarker integration Define this if you need any of these integrations
-			spring版本升级到了4 否则就会报ClassNotFoundException 2019-10-18
-			-->
+			spring版本升级到了4 否则就会报ClassNotFoundException 2019-10-18 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -135,11 +135,18 @@
 		<!-- <dependency> <groupId>postgresql</groupId> <artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc4</version> </dependency> -->
 
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.2.2</version>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.postgresql/org.motechproject.org.postgresql -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>postgresql</groupId> -->
+		<!-- <artifactId>postgresql</artifactId> -->
+		<!-- <version>9.1-901.jdbc3</version> -->
+		<!-- </dependency> -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>9.4-1201-jdbc41</version>
+</dependency>
 
 		<!-- commons-collections -->
 		<dependency>
@@ -149,9 +156,20 @@
 		</dependency>
 
 		<!-- commons-lang -->
+		<!-- <dependency> -->
+		<!-- <groupId>commons-lang</groupId> -->
+		<!-- <artifactId>commons-lang</artifactId> -->
+		<!-- <version>2.6</version> -->
+		<!-- </dependency> -->
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
 
@@ -188,11 +206,12 @@
 			<version>1.0.2.Final</version>
 		</dependency>
 		<!-- hibernate-validator -->
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.1.Final</version>
-		</dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>5.1.0.Final</version>
+    </dependency>
+
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -279,6 +298,12 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>4.2.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -299,10 +324,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

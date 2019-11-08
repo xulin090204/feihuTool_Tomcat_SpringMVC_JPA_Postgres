@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,12 @@ public class 除权数据Controller  extends 爸爸Controller{
 
 	}
 
+	@Autowired
+	除权数据Service 除权数据service;
+
 	@RequestMapping(value = "chuquan_download", method = RequestMethod.POST)
 	public void 取得除权导入数据(HttpServletResponse response) {
-		除权数据Service 除权数据service = new 除权数据Service();
+		//除权数据Service 除权数据service = new 除权数据Service();
 
 		//
 		String s文件全路径;

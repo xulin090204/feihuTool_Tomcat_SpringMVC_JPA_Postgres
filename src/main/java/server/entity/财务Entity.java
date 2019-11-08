@@ -18,7 +18,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 @Data
@@ -93,5 +94,128 @@ public class 财务Entity extends AbstractEntity implements IEntity {
 	@NotEmpty
 	@Column(name="账务更新日期", nullable=true)
 	private String 账务更新日期;
+
+	@NotEmpty
+	@Column(name="上市日期", nullable=true)
+	private String 上市日期;
+
+	@NotEmpty
+	@Column(name="总股本", nullable=true)
+	private String 总股本;
+
+	@NotEmpty
+	@Column(name="国家股", nullable=true)
+	private String 国家股;
+
+	@NotEmpty
+	@Column(name="发起人法人股", nullable=true)
+	private String 发起人法人股;
+
+	@NotEmpty
+	@Column(name="法人股", nullable=true)
+	private String 法人股;
+
+	@NotEmpty
+	@Column(name="B股", nullable=true)
+	private String B股;
+
+	@NotEmpty
+	@Column(name="H股", nullable=true)
+	private String H股;
+
+	@NotEmpty
+	@Column(name="职工股", nullable=true)
+	private String 职工股;
+
+	@NotEmpty
+	@Column(name="总资产", nullable=true)
+	private String 总资产;
+
+	@NotEmpty
+	@Column(name="流动资产", nullable=true)
+	private String 流动资产;
+
+	@NotEmpty
+	@Column(name="固定资产", nullable=true)
+	private String 固定资产;
+
+	@NotEmpty
+	@Column(name="无形资产", nullable=true)
+	private String 无形资产;
+
+	@NotEmpty
+	@Column(name="股东人数", nullable=true)
+	private String 股东人数;
+
+	@NotEmpty
+	@Column(name="流动负债", nullable=true)
+	private String 流动负债;
+
+	@NotEmpty
+	@Column(name="长期负债", nullable=true)
+	private String 长期负债;
+
+	@NotEmpty
+	@Column(name="资本公积金", nullable=true)
+	private String 资本公积金;
+
+	@NotEmpty
+	@Column(name="净资产", nullable=true)
+	private String 净资产;
+
+	@NotEmpty
+	@Column(name="主营收入", nullable=true)
+	private String 主营收入;
+
+	@NotEmpty
+	@Column(name="主营利润", nullable=true)
+	private String 主营利润;
+
+	@NotEmpty
+	@Column(name="应收帐款", nullable=true)
+	private String 应收帐款;
+
+	@NotEmpty
+	@Column(name="营业利润", nullable=true)
+	private String 营业利润;
+
+	@NotEmpty
+	@Column(name="投资收益", nullable=true)
+	private String 投资收益;
+
+	@NotEmpty
+	@Column(name="经营现金流", nullable=true)
+	private String 经营现金流;
+
+	@NotEmpty
+	@Column(name="总现金流", nullable=true)
+	private String 总现金流;
+
+	@NotEmpty
+	@Column(name="存贷", nullable=true)
+	private String 存贷;
+
+	@NotEmpty
+	@Column(name="利润总额", nullable=true)
+	private String 利润总额;
+
+	@NotEmpty
+	@Column(name="税后利润", nullable=true)
+	private String 税后利润;
+
+	@NotEmpty
+	@Column(name="净利润", nullable=true)
+	private String 净利润;
+
+	@NotEmpty
+	@Column(name="未分利润", nullable=true)
+	private String 未分利润;
+
+	@NotEmpty
+	@Column(name="保留", nullable=true)
+	private String 保留;
+
+
+
 
 }

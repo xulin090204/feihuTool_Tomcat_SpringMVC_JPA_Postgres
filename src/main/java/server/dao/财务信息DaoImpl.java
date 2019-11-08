@@ -41,7 +41,7 @@ import server.entity.财务Entity;
 	SELECT * FROM public.book;
  */
 
-@Repository("财务信息Dao")
+@Repository("财务信息dao")
 public class 财务信息DaoImpl  extends AbstractDao<Integer, 财务Entity> implements 财务信息Dao {
 
 	public 财务Entity findById(int id) {
@@ -98,6 +98,8 @@ public class 财务信息DaoImpl  extends AbstractDao<Integer, 财务Entity> imp
 	public void save(List<财务Entity> 财务Entitylist) {
 		// TODO 自動生成されたメソッド・スタブ
 		for(财务Entity 财务entity : 财务Entitylist) {
+			财务Entity result= findByStockInfo(财务entity);
+			if(result==null)
 			save(财务entity);
 		}
 	}
@@ -109,4 +111,63 @@ public class 财务信息DaoImpl  extends AbstractDao<Integer, 财务Entity> imp
 //	    }
 //	    collection.iterator().hasNext();
 //	}
+	public 财务Entity findByStockInfo(财务Entity 财务entityParam) {
+
+		  try{
+		   // 取得单条结果
+		   // 市场代码 + 股票代码 + 时间（到日）+ 送股 + 配股 + 配股价 + 分红
+
+		   // .createQuery("SELECT u FROM 除权信息 u WHERE u.市场代码 LIKE :市场代码 AND u.股票代码 LIKE :股票代码 AND u.UTCtime LIKE :UTCtime AND u.送股 LIKE :送股 AND u.配股 LIKE :配股 AND u.配股价 LIKE :配股价 AND u.分红 LIKE :分红")
+		   // .createQuery("SELECT u FROM 除权Entity u WHERE u.市场代码 LIKE :市场代码")
+		   财务Entity 财务entity = (财务Entity) getEntityManager()
+		     .createQuery("SELECT u FROM 财务Entity u WHERE u.市场代码 LIKE :市场代码 AND u.股票代码 LIKE :股票代码 AND u.UTCtime LIKE :UTCtime AND u.账务更新日期 LIKE :账务更新日期")
+		     .setParameter("市场代码", 财务entityParam.get市场代码())
+		     .setParameter("股票代码", 财务entityParam.get股票代码())
+		     .setParameter("UTCtime", 财务entityParam.getUTCtime())
+//		     .setParameter("流通股本", 财务entityParam.get流通股本())
+//		     .setParameter("所属省份", 财务entityParam.get所属省份())
+//		     .setParameter("所属行业", 财务entityParam.get所属行业())
+		     .setParameter("账务更新日期", 财务entityParam.get账务更新日期())
+//		     .setParameter("上市日期", 财务entityParam.get上市日期())
+//		     .setParameter("总股本", 财务entityParam.get总股本())
+//		     .setParameter("国家股", 财务entityParam.get国家股())
+//		     .setParameter("发起人法人股", 财务entityParam.get发起人法人股())
+//		     .setParameter("法人股", 财务entityParam.get法人股())
+//		     .setParameter("B股", 财务entityParam.getB股())
+//		     .setParameter("H股", 财务entityParam.getH股())
+//		     .setParameter("职工股", 财务entityParam.get职工股())
+//		     .setParameter("总资产", 财务entityParam.get总资产())
+//		     .setParameter("流动资产", 财务entityParam.get流动资产())
+//		     .setParameter("固定资产", 财务entityParam.get固定资产())
+//		     .setParameter("无形资产", 财务entityParam.get无形资产())
+//		     .setParameter("股东人数", 财务entityParam.get股东人数())
+//		     .setParameter("流动负债", 财务entityParam.get流动负债())
+//		     .setParameter("长期负债", 财务entityParam.get长期负债())
+//		     .setParameter("资本公积金", 财务entityParam.get资本公积金())
+//		     .setParameter("净资产", 财务entityParam.get净资产())
+//		     .setParameter("主营收入", 财务entityParam.get主营收入())
+//		     .setParameter("主营利润", 财务entityParam.get主营利润())
+//		     .setParameter("应收帐款", 财务entityParam.get应收帐款())
+//		     .setParameter("营业利润", 财务entityParam.get营业利润())
+//		     .setParameter("投资收益", 财务entityParam.get投资收益())
+//		     .setParameter("经营现金流", 财务entityParam.get经营现金流())
+//		     .setParameter("总现金流", 财务entityParam.get总现金流())
+//		     .setParameter("存贷", 财务entityParam.get存贷())
+//		     .setParameter("利润总额", 财务entityParam.get利润总额())
+//		     .setParameter("税后利润", 财务entityParam.get税后利润())
+//		     .setParameter("净利润 ", 财务entityParam.get净利润 ())
+//		     .setParameter("未分利润", 财务entityParam.get未分利润())
+//		     .setParameter("保留", 财务entityParam.get保留())
+
+		     .getSingleResult();
+
+		   if(财务entity!=null){
+		    return 财务entity;
+		   }
+		   return null;
+
+		  }catch(NoResultException ex){
+		   return null;
+		  }
+		 }
 }

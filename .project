@@ -3,7 +3,7 @@
 	<name>feihuTool_Tomcat_SpringMVC_JPA_Postgres</name>
 	<comment></comment>
 	<projects>
-		<project>股票数据</project>
+		<project>FeihuTool_Convert</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -46,4 +46,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/java/server/controller/爸爸Controller.java</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/Documents/WeChat%20Files/xuguanglin0114/FileStorage/File/2019-11/%E7%88%B8%E7%88%B8Controller.java</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
